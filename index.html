@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>v1tcey</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    @font-face {
+      font-family: "Benzin";
+      src: url("https://db.onlinewebfonts.com/t/14bdb38a021c594b34f1dd5a0b17d5f0.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Benzin";
+      src: url("https://db.onlinewebfonts.com/t/e37c5bb24acd803973c692c8c59a6230.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0b0b0f;
+      color: #fff;
+      font-family: "Benzin", system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      perspective: 1000px;
+    }
+
+    .container {
+      background: #111118;
+      border-radius: 20px;
+      padding: 30px 20px;
+      width: 100%;
+      max-width: 700px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+      position: relative;
+      transition: transform 0.2s ease;
+      will-change: transform;
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 20px;
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      min-height: 60px;
+      padding: 0 22px;
+      background: #1a1a24;
+      border-radius: 15px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 700;
+      font-family: "Benzin", sans-serif;
+      letter-spacing: 0.2px;
+      transition: transform .2s ease, background .2s ease;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn:hover {
+      background: #2b2b3b;
+      transform: scale(1.04);
+    }
+
+    .btn i {
+      font-size: 1.2rem;
+      color: #5865F2 !important;
+      filter: drop-shadow(0 0 6px rgba(88,101,242,.55));
+      transition: filter .2s ease, transform .2s ease;
+    }
+
+    .btn:hover i {
+      filter: drop-shadow(0 0 10px rgba(88,101,242,.8));
+      transform: translateY(-1px);
+    }
+
+    .username {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #888;
+      margin-top: 10px;
+    }
+
+    .username a { color: #888; text-decoration: none; }
+    .username a:hover { color: #fff; }
+
+    .views {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      font-size: 14px;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    .views img { margin-right: 6px; }
+
+    @media (max-width: 600px) {
+      .button-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="card">
+    <!-- Счётчик просмотров -->
+    <div class="views">
+      <img src="https://hits.seeyoufarm.com/favicon.ico" width="14" height="14" alt="">
+      <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://v1tcey.github.io/v1tcey/&count_bg=%235865F2&title_bg=%23121218&icon=visualstudio.svg&icon_color=%23FFFFFF&title=views&edge_flat=false" alt="views"/>
+    </div>
+
+    <img src="avatar.png" alt="Avatar" class="avatar" />
+
+    <div class="title">v1tcey</div>
+    <div class="subtitle">designer & developer</div>
+
+    <div class="button-row">
+      <a href="https://www.youtube.com/@v1tcey" class="btn" target="_blank" rel="noopener">
+        <i class="fas fa-link" aria-hidden="true"></i>
+        <span>YouTube</span>
+      </a>
+      <a href="https://t.me/v1tceydesigner" class="btn" target="_blank" rel="noopener">
+        <i class="fab fa-telegram" aria-hidden="true"></i>
+        <span>Telegram</span>
+      </a>
+    </div>
+
+    <div class="username">
+      <a href="https://t.me/v1tceydesign" target="_blank" rel="noopener">@v1tceydesign</a>
+    </div>
+  </div>
+
+  <script>
+    const card = document.getElementById('card');
+    document.addEventListener('mousemove', (e) => {
+      const x = (window.innerWidth / 2 - e.pageX) / 30;
+      const y = (window.innerHeight / 2 - e.pageY) / 30;
+      card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+    document.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+  </script>
+</body>
+</html>
