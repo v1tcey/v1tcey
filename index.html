@@ -136,19 +136,15 @@
       opacity: 0.7;
       pointer-events: none;
     }
-    .views img { margin-right: 6px; }
-
-    @media (max-width: 600px) {
-      .button-row { flex-direction: column; }
-    }
+    .views i { margin-right: 6px; }
   </style>
 </head>
 <body>
   <div class="container" id="card">
-    <!-- Счётчик просмотров -->
+    <!-- Счётчик посещений -->
     <div class="views">
-      <img src="https://hits.seeyoufarm.com/favicon.ico" width="14" height="14" alt="">
-      <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://v1tcey.github.io/v1tcey/&count_bg=%235865F2&title_bg=%23121218&icon=visualstudio.svg&icon_color=%23FFFFFF&title=views&edge_flat=false" alt="views"/>
+      <i class="fas fa-eye"></i>
+      <span id="viewCounter">Загрузка...</span>
     </div>
 
     <img src="avatar.png" alt="Avatar" class="avatar" />
@@ -173,6 +169,7 @@
   </div>
 
   <script>
+    // Лёгкий 3D-эффект
     const card = document.getElementById('card');
     document.addEventListener('mousemove', (e) => {
       const x = (window.innerWidth / 2 - e.pageX) / 30;
@@ -182,6 +179,13 @@
     document.addEventListener('mouseleave', () => {
       card.style.transform = 'rotateY(0deg) rotateX(0deg)';
     });
+
+    // Счётчик посещений (CountAPI)
+    fetch('https://api.countapi.xyz/hit/v1tcey-card/views')
+      .then(res => res.json())
+      .then(res => {
+        document.getElementById('viewCounter').innerText = res.value + " посещения";
+      });
   </script>
 </body>
 </html>
