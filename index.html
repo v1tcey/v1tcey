@@ -141,7 +141,6 @@
 </head>
 <body>
   <div class="container" id="card">
-    <!-- Счётчик посещений -->
     <div class="views">
       <i class="fas fa-eye"></i>
       <span id="viewCounter">Загрузка...</span>
@@ -169,7 +168,6 @@
   </div>
 
   <script>
-    // Лёгкий 3D-эффект
     const card = document.getElementById('card');
     document.addEventListener('mousemove', (e) => {
       const x = (window.innerWidth / 2 - e.pageX) / 30;
@@ -180,7 +178,6 @@
       card.style.transform = 'rotateY(0deg) rotateX(0deg)';
     });
 
-    // Счётчик посещений (CountAPI)
     fetch('https://api.countapi.xyz/hit/v1tcey-card/views')
       .then(res => res.json())
       .then(res => {
