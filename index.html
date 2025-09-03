@@ -125,27 +125,13 @@
     .username a { color: #888; text-decoration: none; }
     .username a:hover { color: #fff; }
 
-    .views {
-      position: absolute;
-      top: 15px;
-      left: 20px;
-      font-size: 14px;
-      color: #aaa;
-      display: flex;
-      align-items: center;
-      opacity: 0.7;
-      pointer-events: none;
+    @media (max-width: 600px) {
+      .button-row { flex-direction: column; }
     }
-    .views i { margin-right: 6px; }
   </style>
 </head>
 <body>
   <div class="container" id="card">
-    <div class="views">
-      <i class="fas fa-eye"></i>
-      <span id="viewCounter">Загрузка...</span>
-    </div>
-
     <img src="avatar.png" alt="Avatar" class="avatar" />
 
     <div class="title">v1tcey</div>
@@ -177,12 +163,6 @@
     document.addEventListener('mouseleave', () => {
       card.style.transform = 'rotateY(0deg) rotateX(0deg)';
     });
-
-    fetch('https://api.countapi.xyz/hit/v1tcey-card/views')
-      .then(res => res.json())
-      .then(res => {
-        document.getElementById('viewCounter').innerText = res.value + " посещения";
-      });
   </script>
 </body>
 </html>
